@@ -1,0 +1,5 @@
+router, ABC123, cisco, 192.168.10.1, 1, ios
+router, ABC123, cisco, 192.168.10.2, 1, ios
+router, RMP123, cisco, 192.168.10.3, 1, ios
+switch, ARR678, cisco, 10.0.0.1, 1, ios, 24, False
+firewall, PPA678, juniper, 10.0.0.3, 2, junos, transparent

@@ -1,3 +1,5 @@
 *.bkp
 *.dtmp
 .idea/
+*/__pycache__/*
+src/__pycache__/*

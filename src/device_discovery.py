@@ -5,6 +5,7 @@ from connectivity import Connectivity
 
 
 class EasySNMPDiscovery:
+    """Discover devices using Easy SNMP"""
     def __init__(self, ip_address, snmp_community):
         if not Connectivity.check_connectivity(ip_address):
             raise ConnectionError(f"{ip_address} not reachable!")
@@ -45,13 +46,6 @@ class EasySNMPDiscovery:
         except easysnmp_exceptions.EasySNMPTimeoutError:
             raise RuntimeError("SNMP community either not configured or is incorrect (get-vendor)")
 
-    # def __str__(self):
-    #     return (
-    #         f"hostname: {self.get_hostname()}, vendor: {self.get_vendor()}, "
-    #         f"serial: {self.get_serial_no()}, {self.get_version()} "
-    #     )
-
 
 if __name__ == "__main__":
-    device = EasySNMPDiscovery("192.168.0.2", "shahzad")
-    print(device)
+    device = EasySNMPDiscovery("192.168.201.1", "cisco123")

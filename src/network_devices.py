@@ -1,17 +1,19 @@
 from src.device import Device
 
 
-class IOSSwitch(Device):
+class Switch(Device):
+    """Network switch"""
     def __init__(
         self,
-        serial_number="",
-        pid="",
+        serial_number=None,
         vendor="cisco",
-        mgmt_ip="",
+        mgmt_ip=None,
         no_of_ports=24,
         layer3_support=False,
+        *args,
+        **kwargs
     ):
-        super().__init__(serial_number, pid, vendor, mgmt_ip)
+        super().__init__(serial_number, vendor, mgmt_ip)
         self._no_of_ports = no_of_ports
         self._layer3_support = layer3_support
 
@@ -35,14 +37,19 @@ class IOSSwitch(Device):
         return self.vendor.upper() + " Switch, Mgmt IP: " + self.mgmt_ip
 
 
-class IOSRouter(Device):
-    def __init_(self, serial_number="", pid="", vendor="cisco", mgmt_ip=""):
-        super().__init__(serial_number, pid, vendor, mgmt_ip)
+class Router(Device):
+    """Network Router"""
+    def __init_(self, serial_number="", vendor="cisco", mgmt_ip="", os="ios", ios_version=None, *args, **kwargs):
+        super().__init__(serial_number, vendor, mgmt_ip)
+        self.os = os
+        self.ios_version = ios_version
 
     def __str__(self):
         return self.vendor.upper() + " Router, Mgmt IP: " + self.mgmt_ip
 
 
+# Firewalls are still under active consideration, not decided what should go into firewalls class
+# Following code is just a starter.
 class ASAFirewall(Device):
     def __init__(
         self,

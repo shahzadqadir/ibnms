@@ -1,9 +1,8 @@
 class Device:
     """Represents a network device"""
 
-    def __init__(self, serial_number="", pid="", vendor=None, mgmt_ip=""):
+    def __init__(self, serial_number=None, vendor=None, mgmt_ip=""):
         self._serial_number = serial_number
-        self._pid = pid
         self._vendor = vendor
         self._mgmt_ip = mgmt_ip
 
@@ -14,14 +13,6 @@ class Device:
     @serial_number.setter
     def serial_number(self, serial):
         self._serial_number = serial
-
-    @property
-    def pid(self):
-        return self._pid
-
-    @pid.setter
-    def pid(self, new_pid):
-        self.pid = new_pid
 
     @property
     def vendor(self):
